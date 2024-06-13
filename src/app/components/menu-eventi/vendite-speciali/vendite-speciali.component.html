@@ -1,17 +1,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-<h1>VENDITE SPECIALI</h1>
-<h2>Eventi in corso</h2>
+<h3>VENDITE SPECIALI</h3>
+<!--<h2>Eventi in corso</h2>-->
 <div id="card">
-    <div id="img_evento"><img src="/assets/eventi-negozio-abbigliamento-1.jpg" alt="foto-evento-vendite"></div>
+    <div id="img_evento" [routerLink]="prenotazione">
+        <div id="copertina">
+            <p id="nome_evento">SCONTI DI PRIMAVERA</p>
+            <p id="giorno">36</p>
+            <p>Luglio</p>
+        </div>
+    </div>
     <div id="info_evento">
-        <div id="titolo_evento"></div>
-        <div id="">
+        <div id="orario">
+            <span class="material-symbols-outlined">schedule</span>
+            <p>09:30 - 20:00</p>
+        </div>
+        <div (click)="openLocation()" id="luogo">
             <span class="material-symbols-outlined">location_on</span>
-            <span class="material-symbols-outlined">calendar_month</span>
+            <p>Posizione</p>
         </div>
     </div>
 </div>
+<!--
 <h2>Eventi terminati</h2>
 <div>
     <div id="img_evento"></div>
@@ -23,3 +33,4 @@
         </div>
     </div>
 </div>
+-->

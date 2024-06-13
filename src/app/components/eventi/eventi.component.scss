@@ -43,6 +43,11 @@ p{
     font-family: sans-serif;
     font-size: 14px;
 }
+#titolo{
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}
 #card:hover {
     background-color: rgba($color: lightblue, $alpha: 0.5);
     border: none;

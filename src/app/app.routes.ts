@@ -9,6 +9,7 @@ import { MeTrainingComponent } from './components/menu-eventi/me-training/me-tra
 import { MeVisiteComponent } from './components/menu-eventi/me-visite/me-visite.component';
 import { RitiroDispositiviMediciComponent } from './components/menu-eventi/ritiro-dispositivi-medici/ritiro-dispositivi-medici.component';
 import { TestCovidComponent } from './components/menu-eventi/test-covid/test-covid.component';
+import { PrenotazioneComponent } from './components/prenotazione/prenotazione.component';
 
 export const routes: Routes = [
   { path: '', component: EventiComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'me_visite', component: MeVisiteComponent },
   { path: 'ritiro_dispositivi_medici', component: RitiroDispositiviMediciComponent },
   { path: 'test_covid', component: TestCovidComponent },
+  { path: 'prenotazione', component: PrenotazioneComponent },
 ];

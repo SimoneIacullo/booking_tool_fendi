@@ -4,8 +4,24 @@
     padding: 0;
     transition: all ease 0.2s;
 }
-h3, #card{
-    margin-left: 20px;
+#titolo{
+    display: flex;
+    align-items: center;
+}
+span{
+    color: steelblue;
+}
+#bag{
+    font-size: 50px;
+    color: steelblue;
+    margin: 0 10px;
+}
+h3{
+    color: steelblue;
+    margin: 0;
+}
+#card{
+    margin: 40px;
 }
 #img_evento{
     background-image: url(/assets/eventi-negozio-abbigliamento-1.jpg);
@@ -74,9 +90,6 @@ h3, #card{
 #luogo{
     cursor: pointer;
 }
-span{
-    color: steelblue;
-}
 #orario:hover span, #luogo:hover span{
-    font-size: 2rem;
+    font-size: 3rem;
 }

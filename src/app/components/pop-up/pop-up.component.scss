@@ -1,10 +1,68 @@
-.popup {
+*{
+  box-sizing: border-box;
+}
+#popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  }
+    z-index: 3;
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 8px 8px 10px black;
+    width: 500px;
+}
+#copertina{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+#titolo{
+  display: flex;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  background-color: steelblue;
+  font-size: 24px;
+  padding: 10px;
+}
+#titolo p{
+  margin: 0;
+  padding: 0;
+}
+#bag{
+  margin: 0 5px 5px 5px;
+  font-size: 2rem;
+}
+#informazioni{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 20px;
+}
+#informazioni p, #informazioni div{
+  margin: 10px;
+}
+#informazioni span{
+  margin: 0 5px 5px 5px;
+}
+#barra{
+  margin: 0 auto;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, steelblue, steelblue, transparent);
+}
+#conferma{
+  color: steelblue;
+}
+#chiudi{
+  color: crimson;
+}
+#pulsanti{
+  float: right;
+  margin: 15px;
+}

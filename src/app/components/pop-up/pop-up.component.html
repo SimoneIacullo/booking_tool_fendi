@@ -1,9 +1,24 @@
-<div id="popup">
-    <div>Conferma la tua Prenotazione</div>
-    <div>
-        <span class="material-symbols-outlined">shopping_bag</span>
-        <p>Evento: Sconti di Primavera</p>
-        <span class="material-symbols-outlined">calendar_month</span>
+<div id="copertina">
+    <div id="popup">
+        <div id="titolo">
+            <span id="bag" class="material-symbols-outlined">shopping_bag</span>
+            <p>Conferma la tua Prenotazione</p>
+        </div>
+        <div id="informazioni">
+            <p>Evento: Sconti di Primavera</p>
+            <div>
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>36 Luglio</span>
+            </div>
+            <div>
+                <span class="material-symbols-outlined">schedule</span>
+                <span>9:30</span>
+            </div>
+        </div>
+        <div id="barra"></div>
+        <div id="pulsanti">
+            <button id="conferma" (click)="conferma()" mat-button>CONFERMA</button>
+            <button id="chiudi" (click)="closePopUp()" mat-button>CHIUDI</button>
+        </div>
     </div>
-    <button (click)="closePopUp()" mat-button>Chiudi</button>
 </div>

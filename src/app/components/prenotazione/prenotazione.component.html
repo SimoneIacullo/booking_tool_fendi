@@ -1,7 +1,9 @@
-<div><span id="bag" class="material-symbols-outlined">shopping_bag</span></div>
-<h3>Sconti di Primavera</h3>
-<p>Stato evento: {{disponibile}}</p>
-<button *ngIf="!mostraGiorni" (click)="vediDisponibilita()" mat-button>Nuova Prenotazione</button>
+<div id="titolo">
+  <div><span id="bag" class="material-symbols-outlined">shopping_bag</span></div>
+  <h3>Sconti di Primavera</h3>
+</div>
+<p id="testoIniziale">Disponibilità evento:</p>
+<button id="nuovaPrenotazione" *ngIf="!mostraGiorni" (click)="vediDisponibilita()" mat-button>Nuova Prenotazione</button>
 <div *ngIf="mostraGiorni">
     <table>
         <thead>
@@ -24,6 +26,6 @@
         </tbody>
         }
     </table>
-    <button (click)="vediDisponibilita()" mat-button>Annulla</button>
+    <button id="annulla" (click)="vediDisponibilita()" mat-button>Annulla</button>
 </div>
 <app-pop-up *ngIf="showPopUp" (close)="closePopUp()"></app-pop-up>

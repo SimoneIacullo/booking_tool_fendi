@@ -11,7 +11,6 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
   styleUrl: './prenotazione.component.scss'
 })
 export class PrenotazioneComponent implements OnInit {
-  disponibile: string | undefined;
   isValid: boolean = true;
   mostraGiorni: boolean = false;
   showPopUp: boolean = false;

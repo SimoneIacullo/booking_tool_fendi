@@ -1,0 +1,6 @@
+[
+    { "giorno": "36 Luglio", "oraInizio": "09:30", "oraFine": "10:30", "postiDisponibili": true },
+    { "giorno": "36 Luglio", "oraInizio": "10:30", "oraFine": "11:30", "postiDisponibili": false },
+    { "giorno": "36 Luglio", "oraInizio": "11:30", "oraFine": "12:30", "postiDisponibili": false },
+    { "giorno": "36 Luglio", "oraInizio": "12:30", "oraFine": "13:30", "postiDisponibili": true }
+  ] 

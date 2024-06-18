@@ -1,0 +1,60 @@
+<div id="titolo">
+    <div><span id="bag" class="material-symbols-outlined">psychology_alt</span></div>
+    <h3>2° Focus Group FEND&I</h3>
+</div>
+@if(!prenotazioneEffettuta){
+<div>
+    <p class="testoIniziale">Disponibilità evento:</p>
+    @if(!mostraGiorni){
+    <button id="nuovaPrenotazione" (click)="vediDisponibilita()" mat-button>Nuova Prenotazione</button>
+    }@else{
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ora inizio</th>
+                <th>Ora fine</th>
+                <th>Posti disponibili</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4"><div id="barra"></div></td></tr>
+                <tr [ngStyle]="{cursor: getCursor(prenotazione.postiDisponibili)}" (click)="prenota(prenotazione)" id="row">
+                    <td>{{ prenotazione.giorno }}</td>
+                    <td>{{ prenotazione.oraInizio }}</td>
+                    <td>{{ prenotazione.oraFine }}</td>
+                    <td>{{ prenotazione.postiDisponibili }}</td>
+                </tr>
+            </tbody>
+            <tr><td colspan="4"><div id="barra"></div></td></tr>
+        </table>
+        <button class="aggiorna" (click)="aggiorna()" mat-button>Aggiorna</button>
+        <button class="annulla" (click)="vediDisponibilita()" mat-button>Annulla</button>
+    </div>
+    }
+</div>
+}@else{
+<div>
+    <p class="testoIniziale">Prenotazione effettuata:</p>
+    <table>
+    <thead>
+        <tr>
+        <th>Data</th>
+        <th>Ora inizio</th>
+        <th>Ora fine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="3"><div id="barra"></div></td></tr>
+        <tr id="row">
+            <td>{{ prenotazione.giorno }}</td>
+            <td>{{ prenotazione.oraInizio }}</td>
+            <td>{{ prenotazione.oraFine }}</td>
+            </tr>
+    </tbody>
+    <tr><td colspan="4"><div id="barra"></div></td></tr>
+    </table>
+    <button class="annulla" (click)="annullaPrenotazione()" mat-button>Annulla Prenotazione</button>
+</div>
+}

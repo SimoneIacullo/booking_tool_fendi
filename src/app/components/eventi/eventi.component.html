@@ -1,10 +1,18 @@
 <p id="titolo">Registra la tua presenza agli eventi interni attualmente attivi</p>
 <div id="container">
     @for(card of cards; track card){
-    <div id="card" [routerLink]="card.indirizzo">
-        <div class="centra"><span class="material-symbols-outlined">{{card.icona}}</span></div>
-        <div class="barra"></div>
-        <div class="centra2"><p>{{card.didascalia}}</p></div>
-    </div>
+        @if(!card.link){
+            <div id="card" [routerLink]="card.indirizzo">
+                <div class="centra"><span class="material-symbols-outlined">{{card.icona}}</span></div>
+                <div class="barra"></div>
+                <div class="centra2"><p>{{card.didascalia}}</p></div>
+            </div>
+        }@else {
+            <a [href]="card.indirizzo" target="_blank"><div id="card">
+                <div class="centra"><span class="material-symbols-outlined">{{card.icona}}</span></div>
+                <div class="barra"></div>
+                <div class="centra2"><p>{{card.didascalia}}</p></div>
+            </div></a>
+        }
     }
 </div>

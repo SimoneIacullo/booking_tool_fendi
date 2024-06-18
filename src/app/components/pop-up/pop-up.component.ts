@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DialogData } from '../../model/master-data';
 
 @Component({
   selector: 'app-pop-up',
@@ -9,11 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './pop-up.component.scss'
 })
 export class PopUpComponent {
-  @Output() close = new EventEmitter<void>();
-  closePopUp() {
-    this.close.emit();
+  readonly dialogRef = inject(MatDialogRef<PopUpComponent>);
+  readonly data = inject<{posti: DialogData}>(MAT_DIALOG_DATA);
+  onClose(): void {
+    this.dialogRef.close();
   }
-  conferma(){
-    
+  conferma(result: boolean): void {
+    this.dialogRef.close(result);
   }
 }

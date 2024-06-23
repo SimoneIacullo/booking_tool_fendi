@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+  }
+  #popup {
+      background-color: #eee;
+      box-shadow: 8px 8px 10px black;
+      width: 500px;
+  }
+  #titolo{
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    background-color: steelblue;
+    font-size: 24px;
+    padding: 10px;
+  }
+  #titolo p{
+    margin: 0;
+    padding: 0;
+  }
+  #bag{
+    margin: 0 5px 5px 5px;
+    font-size: 2rem;
+  }
+  #informazioni{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 20px;
+  }
+  #informazioni p, #informazioni div{
+    margin: 10px;
+  }
+  #informazioni span{
+    margin: 0 5px;
+  }
+  #barra{
+    margin: 0 auto;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, steelblue, steelblue, transparent);
+  }
+  #conferma{
+    color: steelblue;
+  }
+  #conferma:hover{
+    background-color: rgba(173,216,230,0.3);
+  }
+  #chiudi{
+    color: crimson;
+  }
+  #chiudi:hover{
+    background-color: rgba(240,128,128,0.3);
+  }
+  #pulsanti{
+    float: right;
+    margin: 15px;
+  }
+  #selezionePosti{
+    display: flex;
+    align-items: center;
+  }
+  #selezionePosti button{
+    border: none;
+    cursor: pointer;
+  }

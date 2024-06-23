@@ -1,1 +1,64 @@
-<p>prenotazione-health works!</p>
+<div id="titolo">
+    <div><span id="bag" class="material-symbols-outlined">shopping_bag</span></div>
+    <h3>Sconti di Primavera</h3>
+  </div>
+  @if(!prenotazioneEffettuta){
+  <div>
+    <p class="testoIniziale">Disponibilità evento:</p>
+    @if(!mostraGiorni){
+    <button id="nuovaPrenotazione" (click)="vediDisponibilita()" mat-button>Nuova Prenotazione</button>
+    }@else{
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ora inizio</th>
+                <th>Ora fine</th>
+                <th>Posti disponibili</th>
+            </tr>
+            </thead>
+            @for(posto of prenotazione; track posto){
+            <tbody>
+                <tr><td colspan="4"><div id="barra"></div></td></tr>
+                <tr [ngStyle]="{cursor: getCursor(posto.postiDisponibili)}" (click)="prenota(posto)" id="row">
+                    <td>{{ posto.giorno }}</td>
+                    <td>{{ posto.oraInizio }}</td>
+                    <td>{{ posto.oraFine }}</td>
+                    <td>{{ posto.postiDisponibili }}</td>
+                </tr>
+            </tbody>
+            }
+            <tr><td colspan="4"><div id="barra"></div></td></tr>
+        </table>
+        <button class="aggiorna" (click)="aggiorna()" mat-button>Aggiorna</button>
+        <button class="annulla" (click)="vediDisponibilita()" mat-button>Annulla</button>
+    </div>
+    }
+  </div>
+  }@else{
+  <div>
+    <p class="testoIniziale">Prenotazione effettuata:</p>
+    <table>
+    <thead>
+        <tr>
+        <th>Data</th>
+        <th>Ora inizio</th>
+        <th>Ora fine</th>
+        <th>Posti prenotati</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="4"><div id="barra"></div></td></tr>
+        <tr id="row">
+            <td>{{ prenotazioneOggetto.giorno }}</td>
+            <td>{{ prenotazioneOggetto.oraInizio }}</td>
+            <td>{{ prenotazioneOggetto.oraFine }}</td>
+            <td>{{ sceltaPosti }}</td>
+            </tr>
+    </tbody>
+    <tr><td colspan="4"><div id="barra"></div></td></tr>
+    </table>
+    <button class="annulla" (click)="annullaPrenotazione()" mat-button>Annulla Prenotazione</button>
+  </div>
+  }

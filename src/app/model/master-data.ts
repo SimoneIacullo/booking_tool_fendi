@@ -9,5 +9,5 @@ export interface DialogData {
     giorno: string;
     oraInizio: string;
     oraFine: string;
-    postiDisponibili: boolean;
+    postiDisponibili: any;
   }

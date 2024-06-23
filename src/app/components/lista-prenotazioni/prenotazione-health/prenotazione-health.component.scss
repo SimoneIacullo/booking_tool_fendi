@@ -1,0 +1,55 @@
+table{
+    width: 600px;
+    border-collapse: collapse;
+    text-align: center;
+}
+tbody{
+    background: linear-gradient(90deg, transparent 0%, #f2f2f2 5%, #f2f2f2 95%, transparent 100%);
+}
+#row td{
+    padding: 10px;
+}
+hr{
+    margin: 0;
+}
+#titolo{
+    display: flex;
+    align-items: center;
+    color: steelblue;
+}
+#bag{
+    font-size: 50px;
+    margin: 0 10px;
+}
+h3{
+    margin: 0;
+}
+#nuovaPrenotazione{
+    color: steelblue;
+    margin: 0 20px;
+}
+#nuovaPrenotazione:hover{
+    background-color: rgba(173,216,230,0.3);
+}
+.annulla{
+    color: crimson;
+    margin: 20px;
+}
+.annulla:hover{
+    background-color: rgba(240,128,128,0.3);
+}
+.aggiorna{
+    color: limegreen;
+}
+.aggiorna:hover{
+    background-color: rgba(0,255,0,0.3);
+}
+.testoIniziale{
+    margin: 20px;
+}
+#barra{
+    margin: 0 auto;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, steelblue, steelblue, transparent);
+  }

@@ -35,9 +35,6 @@ export class PrenotazioneHealthComponent {
     { id: 3, giorno: "36 Luglio", oraInizio: "11:30", oraFine: "12:30", postiDisponibili: 0 },
     { id: 4, giorno: "37 Luglio", oraInizio: "12:30", oraFine: "13:30", postiDisponibili: 7 }
   ]
-  getPosti(posti: boolean): string{
-    return posti ? "green" : "red"
-  }
   getCursor(posti: number): string{
     return posti>0 ? "pointer" : "cursor"
   }

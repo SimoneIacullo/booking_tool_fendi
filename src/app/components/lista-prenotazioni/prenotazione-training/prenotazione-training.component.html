@@ -18,15 +18,17 @@
                 <th>Posti disponibili</th>
             </tr>
             </thead>
+            @for(posto of prenotazioni; track posto.id){
             <tbody>
                 <tr><td colspan="4"><div id="barra"></div></td></tr>
-                <tr [ngStyle]="{cursor: getCursor(prenotazione.postiDisponibili)}" (click)="prenota(prenotazione)" id="row">
-                    <td>{{ prenotazione.giorno }}</td>
-                    <td>{{ prenotazione.oraInizio }}</td>
-                    <td>{{ prenotazione.oraFine }}</td>
-                    <td>{{ prenotazione.postiDisponibili }}</td>
+                <tr [ngStyle]="{cursor: getCursor(posto.postiDisponibili)}" (click)="prenota(posto)" id="row">
+                    <td>{{ posto.giorno }}</td>
+                    <td>{{ posto.oraInizio }}</td>
+                    <td>{{ posto.oraFine }}</td>
+                    <td>{{ posto.postiDisponibili }}</td>
                 </tr>
             </tbody>
+            }
             <tr><td colspan="4"><div id="barra"></div></td></tr>
         </table>
         <button class="aggiorna" (click)="aggiorna()" mat-button>Aggiorna</button>
@@ -48,9 +50,9 @@
     <tbody>
         <tr><td colspan="3"><div id="barra"></div></td></tr>
         <tr id="row">
-            <td>{{ prenotazione.giorno }}</td>
-            <td>{{ prenotazione.oraInizio }}</td>
-            <td>{{ prenotazione.oraFine }}</td>
+            <td>{{ prenotazioni[0].giorno }}</td>
+            <td>{{ prenotazioni[0].oraInizio }}</td>
+            <td>{{ prenotazioni[0].oraFine }}</td>
             </tr>
     </tbody>
     <tr><td colspan="4"><div id="barra"></div></td></tr>

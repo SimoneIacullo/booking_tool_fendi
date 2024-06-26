@@ -5,6 +5,7 @@ import { DialogData } from '../../../model/master-data';
 import { NgStyle } from '@angular/common';
 import { PopUpHealthComponent } from '../../pop-up-health/pop-up-health.component';
 import { MatButton } from '@angular/material/button';
+import { HttpRequestService } from '../../../http-request.service';
 
 @Component({
   selector: 'app-prenotazione-health',
@@ -14,30 +15,45 @@ import { MatButton } from '@angular/material/button';
   styleUrl: './prenotazione-health.component.scss'
 })
 export class PrenotazioneHealthComponent {
+  
+  private httpRequest = inject(HttpRequestService);
+  
   isValid: boolean = true;
   mostraGiorni: boolean = false;
   showPopUp: boolean = false;
   prenotazioneEffettuta: boolean = false;
   prenotazioneOggetto: any = {};
   sceltaPosti: number = 0;
+  prenotazioni: DialogData[] = [];
+  i: number = 0;
+
   ngOnInit(): void {
     this.checkValid();
+    this.getData();
   }
+
+  getData(){
+    this.httpRequest.getEventiHealth().subscribe((result) => {
+      this.prenotazioni = result;
+    })
+  }
+  
+  putHealth(id: number, n: number){
+    this.httpRequest.putPrenotazioneHealth(id, n).subscribe();
+  }
+
   checkValid(){
     return this.isValid ? "Prenotabile" : "Non prenotabile"
   }
+  
   vediDisponibilita(){
     this.mostraGiorni = !this.mostraGiorni;
   }
-  prenotazione: DialogData[] = [
-    { id: 1, giorno: "36 Luglio", oraInizio: "09:30", oraFine: "10:30", postiDisponibili: 12 },
-    { id: 2, giorno: "36 Luglio", oraInizio: "10:30", oraFine: "11:30", postiDisponibili: 1 },
-    { id: 3, giorno: "36 Luglio", oraInizio: "11:30", oraFine: "12:30", postiDisponibili: 0 },
-    { id: 4, giorno: "37 Luglio", oraInizio: "12:30", oraFine: "13:30", postiDisponibili: 7 }
-  ]
+  
   getCursor(posti: number): string{
     return posti>0 ? "pointer" : "cursor"
   }
+  
   prenota(posti: any){
     if(posti.postiDisponibili > 0){
       this.openDialog(posti);
@@ -52,19 +68,25 @@ export class PrenotazioneHealthComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         this.sceltaPosti = result;
-        const i = this.prenotazione.findIndex(p => p.id === posti.id);
-        this.prenotazione[i].postiDisponibili = this.prenotazione[i].postiDisponibili - result;
+        this.i = this.prenotazioni.findIndex(p => p.id === posti.id);
         this.dialog.open(PrenotazioneConfermataComponent);
         this.prenotazioneEffettuta = true;
-        this.prenotazioneOggetto = this.prenotazione[i];
+        const id = this.prenotazioni[this.i].id;
+        this.putHealth(id, result);
       }
     });
   }
+  
   annullaPrenotazione(): void{
-    this.prenotazioneEffettuta = false;
-    this.prenotazioneOggetto.postiDisponibili = this.prenotazioneOggetto.postiDisponibili + this.sceltaPosti;
+    const id = this.prenotazioni[this.i].id;
+    const n = this.sceltaPosti;
+    this.httpRequest.putCancellazioneHealth(id, n).subscribe(()=>{
+      this.prenotazioneEffettuta = false;
+      this.getData();
+    })
   }
+  
   aggiorna(){
-    this.ngOnInit();
+    this.getData();
   }
 }

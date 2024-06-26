@@ -1,6 +1,6 @@
 <div id="titolo">
-    <div><span id="bag" class="material-symbols-outlined">shopping_bag</span></div>
-    <h3>Sconti di Primavera</h3>
+    <div><span id="bag" class="material-symbols-outlined">health_and_safety</span></div>
+    <h3>Test Antigenico (Tampone rapido)</h3>
   </div>
   @if(!prenotazioneEffettuta){
   <div>
@@ -18,7 +18,7 @@
                 <th>Posti disponibili</th>
             </tr>
             </thead>
-            @for(posto of prenotazione; track posto){
+            @for(posto of prenotazioni; track posto.id){
             <tbody>
                 <tr><td colspan="4"><div id="barra"></div></td></tr>
                 <tr [ngStyle]="{cursor: getCursor(posto.postiDisponibili)}" (click)="prenota(posto)" id="row">
@@ -51,9 +51,9 @@
     <tbody>
         <tr><td colspan="4"><div id="barra"></div></td></tr>
         <tr id="row">
-            <td>{{ prenotazioneOggetto.giorno }}</td>
-            <td>{{ prenotazioneOggetto.oraInizio }}</td>
-            <td>{{ prenotazioneOggetto.oraFine }}</td>
+            <td>{{ prenotazioni[i].giorno }}</td>
+            <td>{{ prenotazioni[i].oraInizio }}</td>
+            <td>{{ prenotazioni[i].oraFine }}</td>
             <td>{{ sceltaPosti }}</td>
             </tr>
     </tbody>

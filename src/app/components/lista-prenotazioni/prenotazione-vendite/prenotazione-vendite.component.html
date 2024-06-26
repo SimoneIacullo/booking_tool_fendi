@@ -18,7 +18,7 @@
               <th>Posti disponibili</th>
           </tr>
           </thead>
-          @for(posto of prenotazione; track posto){
+          @for(posto of prenotazioni; track posto.id){
           <tbody>
               <tr><td colspan="4"><div id="barra"></div></td></tr>
               <tr [ngStyle]="{cursor: getCursor(posto.postiDisponibili)}" (click)="prenota(posto)" id="row">
@@ -50,9 +50,9 @@
   <tbody>
       <tr><td colspan="3"><div id="barra"></div></td></tr>
       <tr id="row">
-          <td>{{ prenotazioneOggetto.giorno }}</td>
-          <td>{{ prenotazioneOggetto.oraInizio }}</td>
-          <td>{{ prenotazioneOggetto.oraFine }}</td>
+          <td>{{ prenotazioni[i].giorno }}</td>
+          <td>{{ prenotazioni[i].oraInizio }}</td>
+          <td>{{ prenotazioni[i].oraFine }}</td>
           </tr>
   </tbody>
   <tr><td colspan="4"><div id="barra"></div></td></tr>

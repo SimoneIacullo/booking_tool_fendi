@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../../pop-up/pop-up.component';
 import { DialogData } from '../../../model/master-data';
 import { PrenotazioneConfermataComponent } from '../prenotazione-confermata/prenotazione-confermata.component';
+import { HttpRequestService } from '../../../http-request.service';
 
 @Component({
   selector: 'app-prenotazione',
@@ -14,32 +15,48 @@ import { PrenotazioneConfermataComponent } from '../prenotazione-confermata/pren
   styleUrl: './prenotazione-vendite.component.scss'
 })
 export class PrenotazioneVenditeComponent implements OnInit {
+  
+  private httpRequest = inject(HttpRequestService);
+  
   isValid: boolean = true;
   mostraGiorni: boolean = false;
   showPopUp: boolean = false;
   prenotazioneEffettuta: boolean = false;
   prenotazioneOggetto: any = {};
+  prenotazioni: DialogData[] = [];
+  i: number = 0;
+
   ngOnInit(): void {
     this.checkValid();
+    this.getData();
   }
+
+  getData(){
+    this.httpRequest.getEventiVendite().subscribe((result) => {
+      this.prenotazioni = result;
+    })
+  }
+
+  putVendite(id: number){
+    this.httpRequest.putPrenotazioneVendite(id).subscribe();
+  }
+
   checkValid(){
     return this.isValid ? "Prenotabile" : "Non prenotabile"
   }
+
   vediDisponibilita(){
     this.mostraGiorni = !this.mostraGiorni;
   }
-  prenotazione: DialogData[] = [
-    { id: 1, giorno: "36 Luglio", oraInizio: "09:30", oraFine: "10:30", postiDisponibili: true },
-    { id: 2, giorno: "36 Luglio", oraInizio: "10:30", oraFine: "11:30", postiDisponibili: false },
-    { id: 3, giorno: "36 Luglio", oraInizio: "11:30", oraFine: "12:30", postiDisponibili: false },
-    { id: 4, giorno: "37 Luglio", oraInizio: "12:30", oraFine: "13:30", postiDisponibili: true }
-  ]
+
   getPosti(posti: boolean): string{
     return posti ? "green" : "red"
   }
+
   getCursor(posti: boolean): string{
     return posti ? "pointer" : "cursor"
   }
+
   prenota(posti: any){
     if(posti.postiDisponibili){
       this.openDialog(posti);
@@ -52,20 +69,25 @@ export class PrenotazioneVenditeComponent implements OnInit {
       data: {"posti": posti}
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        const i = this.prenotazione.findIndex(p => p.id === posti.id);
-        this.prenotazione[i].postiDisponibili = result;
+      if (result) {
         this.dialog.open(PrenotazioneConfermataComponent);
         this.prenotazioneEffettuta = true;
-        this.prenotazioneOggetto = this.prenotazione[i];
+        this.i = this.prenotazioni.findIndex(p => p.id === posti.id);
+        const id = this.prenotazioni[this.i].id;
+        this.putVendite(id);
       }
     });
   }
+
   annullaPrenotazione(): void{
-    this.prenotazioneEffettuta = false;
-    this.prenotazioneOggetto.postiDisponibili = true;
+    const id = this.prenotazioni[this.i].id;
+    this.httpRequest.putCancellazioneVendite(id).subscribe(()=>{
+      this.prenotazioneEffettuta = false;
+      this.getData();
+    })
   }
+
   aggiorna(){
-    this.ngOnInit();
+    this.getData();
   }
 }

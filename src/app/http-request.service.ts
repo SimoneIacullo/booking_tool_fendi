@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { DialogData } from './model/master-data';
+import { Injectable, inject } from '@angular/core';
+import { DialogData, ModelloEvento, TipoEvento } from './model/master-data';
 import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpRequestService {
+
   base_url: string = "http://localhost:8080";
   constructor(private http: HttpClient) { }
 
@@ -48,4 +50,19 @@ export class HttpRequestService {
     return this.http.put<number>(this.base_url + "/cancellaHealth/" + id, n);
   }
   
+
+
+  getTipoEvento(): Observable<TipoEvento[]> {
+    return this.http.get<TipoEvento[]>(this.base_url + "/tipoEvento");
+  }
+
+  getEventi(tipo: string | null): Observable<ModelloEvento[]> {
+    return this.http.get<ModelloEvento[]>(this.base_url + "/evento/" + tipo);
+  }
+
+}
+
+export const EventoResolver: ResolveFn<ModelloEvento[]> = (route) => {
+  const tipo = route.paramMap.get('tipo');
+  return inject(HttpRequestService).getEventi(tipo);
 }

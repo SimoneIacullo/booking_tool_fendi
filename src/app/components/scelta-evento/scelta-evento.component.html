@@ -1,0 +1,25 @@
+@for (e of evento; track e.id){
+<div id="titolo">
+    <div><span id="icon" class="material-symbols-outlined">{{e.icon}}</span></div>
+    <h3>{{e.nomeTipo}}</h3>
+</div>
+<div id="card">
+    <div id="img_evento">
+        <div id="copertina">
+            <p id="nome_evento">{{e.nome}}</p>
+            <p id="giorno">{{e.giorno}}</p>
+            <p>{{e.mese}}</p>
+        </div>
+    </div>
+    <div id="info_evento">
+        <div id="orario">
+            <span class="material-symbols-outlined">schedule</span>
+            <p>{{e.oraInizio}} - {{e.oraFine}}</p>
+        </div>
+        <div (click)="openLocation(e.posizione)" id="luogo">
+            <span class="material-symbols-outlined">location_on</span>
+            <p>Posizione</p>
+        </div>
+    </div>
+</div>
+}

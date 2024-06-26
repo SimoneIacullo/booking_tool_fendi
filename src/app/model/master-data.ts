@@ -10,4 +10,23 @@ export interface DialogData {
     oraInizio: string;
     oraFine: string;
     postiDisponibili: any;
-  }
+}
+export interface TipoEvento {
+    id: number;
+    nome: string;
+    icon: string;
+    routerLink: string;
+    tipo: string;
+}
+export interface ModelloEvento {
+    id: number;
+    nome: string;
+    giorno: string;
+    mese: string;
+    oraInizio: string;
+    oraFine: string;
+    posizione: string;
+    tipo: string;
+    nomeTipo: string;
+    icon: string;
+}

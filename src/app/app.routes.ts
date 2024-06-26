@@ -4,8 +4,8 @@ import { PrenotazioneVenditeComponent } from './components/lista-prenotazioni/pr
 import { PrenotazioneTrainingComponent } from './components/lista-prenotazioni/prenotazione-training/prenotazione-training.component';
 import { SelezioneEventoComponent } from './components/selezione-evento/selezione-evento.component';
 import { PrenotazioneHealthComponent } from './components/lista-prenotazioni/prenotazione-health/prenotazione-health.component';
-import { PrenotazioneCaffeComponent } from './components/lista-prenotazioni/prenotazione-caffe/prenotazione-caffe.component';
-import { PrenotazioneTrainingMultiComponent } from './components/lista-prenotazioni/prenotazione-training-multi/prenotazione-training-multi.component';
+import { EventoResolver } from './http-request.service';
+import { SceltaEventoComponent } from './components/scelta-evento/scelta-evento.component';
 
 export const routes: Routes = [
   { path: '', component: EventiComponent },
@@ -53,38 +53,14 @@ export const routes: Routes = [
       img_url: "/assets/test-antigenico.jpeg"
     }
   },
-  { path: 'fendi_caffe',
-    component: SelezioneEventoComponent,
-    data: {
-      icona: "local_cafe",
-      titolo: "FENDI CAFFÈ",
-      nome: "SERVIZIO DI RISTORAZIONE",
-      giorno: "1",
-      mese: "Cameriembre",
-      orario: "09:00 - 22:00",
-      posizione: "https://maps.app.goo.gl/exhJ1EB7sGNef33d7",
-      link: "/prenotazione_caffe",
-      img_url: "/assets/cup_of_coffee.JPG"
-    }
-  },
-  { path: 'training_multi',
-    component: SelezioneEventoComponent,
-    data: {
-      icona: "psychology",
-      titolo: "TRAINING MULTI SLOT",
-      nome: "WW RETAIL SEMINAR - VISIT ROME",
-      giorno: "00",
-      mese: "Febbruglio",
-      orario: "15:30 - 19:00",
-      posizione: "https://maps.app.goo.gl/exhJ1EB7sGNef33d7",
-      link: "/prenotazione_training_multi",
-      img_url: "/assets/Employee-Training.png"
+  { path: 'evento/:tipo',
+    component: SceltaEventoComponent,
+    resolve: {
+      eventi: EventoResolver
     }
   },
   { path: 'prenotazione_vendite', component: PrenotazioneVenditeComponent },
   { path: 'prenotazione_training', component: PrenotazioneTrainingComponent },
   { path: 'prenotazione_health', component: PrenotazioneHealthComponent },
-  { path: 'prenotazione_caffe', component: PrenotazioneCaffeComponent },
-  { path: 'prenotazione_training_multi', component: PrenotazioneTrainingMultiComponent }
 ];
 

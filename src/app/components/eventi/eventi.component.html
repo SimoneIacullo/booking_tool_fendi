@@ -16,3 +16,12 @@
         }
     }
 </div>
+<div id="container">
+    @for(evento of eventi; track evento.id){
+        <div id="card" [routerLink]="'evento/' + evento.tipo">
+            <div class="centra"><span class="material-symbols-outlined">{{ evento.icon }}</span></div>
+            <div class="barra"></div>
+            <div class="centra2"><p>{{ evento.nome }}</p></div>
+        </div>
+    }
+</div>

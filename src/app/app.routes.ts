@@ -6,6 +6,9 @@ import { SelezioneEventoComponent } from './components/selezione-evento/selezion
 import { PrenotazioneHealthComponent } from './components/lista-prenotazioni/prenotazione-health/prenotazione-health.component';
 import { EventoResolver } from './http-request.service';
 import { SceltaEventoComponent } from './components/scelta-evento/scelta-evento.component';
+import { PrenotazioneCenaComponent } from './components/lista-prenotazioni/prenotazione-cena/prenotazione-cena.component';
+import { PrenotazioneYogaComponent } from './components/lista-prenotazioni/prenotazione-yoga/prenotazione-yoga.component';
+import { PrenotazioneJavaComponent } from './components/lista-prenotazioni/prenotazione-java/prenotazione-java.component';
 
 export const routes: Routes = [
   { path: '', component: EventiComponent },
@@ -62,5 +65,9 @@ export const routes: Routes = [
   { path: 'prenotazione_vendite', component: PrenotazioneVenditeComponent },
   { path: 'prenotazione_training', component: PrenotazioneTrainingComponent },
   { path: 'prenotazione_health', component: PrenotazioneHealthComponent },
+  
+  { path: 'prenotazione/cena/:id', component: PrenotazioneCenaComponent },
+  { path: 'prenotazione/yoga/:id', component: PrenotazioneYogaComponent },
+  { path: 'prenotazione/java/:id', component: PrenotazioneJavaComponent },
 ];
 

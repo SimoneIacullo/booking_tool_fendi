@@ -1,10 +1,11 @@
-@for (e of evento; track e.id){
 <div id="titolo">
-    <div><span id="icon" class="material-symbols-outlined">{{e.icon}}</span></div>
-    <h3>{{e.nomeTipo}}</h3>
+    <div><span id="icon" class="material-symbols-outlined">{{icon}}</span></div>
+    <h3>{{nomeTipo}}</h3>
 </div>
+<div id="griglia">
+@for (e of evento; track e.id){
 <div id="card">
-    <div id="img_evento">
+    <div id="img_evento" [ngStyle]="{'background-image': 'url(' + e.img + ')'}"  [routerLink]="'/prenotazione/' + e.tipo + '/' + e.id">
         <div id="copertina">
             <p id="nome_evento">{{e.nome}}</p>
             <p id="giorno">{{e.giorno}}</p>
@@ -23,3 +24,4 @@
     </div>
 </div>
 }
+</div>

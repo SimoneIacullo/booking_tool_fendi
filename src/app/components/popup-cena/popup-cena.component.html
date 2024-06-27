@@ -1,0 +1,38 @@
+<div id="popup">
+    <div id="titolo">
+        <span id="bag" class="material-symbols-outlined">shopping_bag</span>
+        <p>Conferma la tua Prenotazione</p>
+    </div>
+    <div id="informazioni">
+        <p>Evento: 2° Focus Group</p>
+        <div>
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span>{{data.posti.giorno}}</span>
+        </div>
+        <div>
+            <span class="material-symbols-outlined">schedule</span>
+            <span>{{data.posti.oraInizio}} - {{data.posti.oraFine}}</span>
+        </div>
+        <div>
+            <p>A che nome vuoi prenotare?</p>
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Inserisci il tuo nome" [(ngModel)]="inputValue" name="inputValue">
+                </mat-form-field>
+            </form>
+        </div>
+        <div>
+            <p>Quanti posti vuoi prenotare?</p>
+            <div id="selezionePosti">
+            <button (click)="decremento()"><span class="material-symbols-outlined">chevron_left</span></button>
+            <span id="varNum">{{n}}</span>
+            <button (click)="aumento()"><span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="barra"></div>
+    <div id="pulsanti">
+        <button (click)="conferma()" id="conferma" mat-button>CONFERMA</button>
+        <button (click)="onClose()" id="chiudi" mat-button>CHIUDI</button>
+    </div>
+</div>

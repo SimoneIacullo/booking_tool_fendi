@@ -26,7 +26,18 @@ export interface ModelloEvento {
     oraInizio: string;
     oraFine: string;
     posizione: string;
+    img: string;
     tipo: string;
     nomeTipo: string;
+    icon: string;
+}
+export interface Prenotazione {
+    id: number;
+    giorno: string;
+    mese: string;
+    oraInizio: string;
+    oraFine: string;
+    posti: string;
+    nome: string;
     icon: string;
 }

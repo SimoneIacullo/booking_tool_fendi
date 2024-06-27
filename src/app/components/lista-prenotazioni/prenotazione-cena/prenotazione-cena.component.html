@@ -1,0 +1,64 @@
+<div id="titolo">
+    <div><span id="icon" class="material-symbols-outlined">{{icon}}</span></div>
+    <h3>{{nome}}</h3>
+</div>
+@if(!prenotazioneEffettuta){
+<div>
+    <p class="testoIniziale">Disponibilità evento:</p>
+    @if(!mostraGiorni){
+    <button id="nuovaPrenotazione" (click)="vediDisponibilita()" mat-button>Nuova Prenotazione</button>
+    }@else{
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ora inizio</th>
+                <th>Ora fine</th>
+                <th>Adesioni</th>
+            </tr>
+            </thead>
+            @for(posto of prenotazioni; track posto.id){
+            <tbody>
+                <tr><td colspan="4"><div id="barra"></div></td></tr>
+                <tr (click)="prenota(posto)" id="row">
+                    <td>{{ posto.giorno }} {{ posto.mese }}</td>
+                    <td>{{ posto.oraInizio }}</td>
+                    <td>{{ posto.oraFine }}</td>
+                    <td>{{ posto.posti }}</td>
+                </tr>
+            </tbody>
+            }
+            <tr><td colspan="4"><div id="barra"></div></td></tr>
+        </table>
+        <button class="aggiorna" (click)="aggiorna()" mat-button>Aggiorna</button>
+        <button class="annulla" (click)="vediDisponibilita()" mat-button>Annulla</button>
+    </div>
+    }
+</div>
+}@else{
+<div>
+    <p class="testoIniziale">Prenotazione effettuata:</p>
+    <table>
+    <thead>
+        <tr>
+        <th>Data</th>
+        <th>Ora inizio</th>
+        <th>Ora fine</th>
+        <th>Posti prenotati</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td colspan="4"><div id="barra"></div></td></tr>
+        <tr id="row">
+            <td>{{ prenotazioni[i].giorno }}</td>
+            <td>{{ prenotazioni[i].oraInizio }}</td>
+            <td>{{ prenotazioni[i].oraFine }}</td>
+            <td>{{ sceltaPosti }}</td>
+            </tr>
+    </tbody>
+    <tr><td colspan="4"><div id="barra"></div></td></tr>
+    </table>
+    <button class="annulla" (click)="annullaPrenotazione()" mat-button>Annulla Prenotazione</button>
+</div>
+}

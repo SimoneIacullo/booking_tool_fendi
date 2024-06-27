@@ -19,6 +19,11 @@ h3{
     color: steelblue;
     margin: 0;
 }
+#griglia{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+}
 #card{
     margin: 40px;
 }

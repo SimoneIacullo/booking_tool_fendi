@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { DialogData, ModelloEvento, TipoEvento } from './model/master-data';
+import { DialogData, ModelloEvento, Prenotazione, TipoEvento } from './model/master-data';
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { PrenotazioneCenaComponent } from './components/lista-prenotazioni/prenotazione-cena/prenotazione-cena.component';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,11 @@ export class HttpRequestService {
 
   getEventi(tipo: string | null): Observable<ModelloEvento[]> {
     return this.http.get<ModelloEvento[]>(this.base_url + "/evento/" + tipo);
+  }
+
+
+  getPrenotazione(id: number | undefined): Observable<Prenotazione[]> {
+    return this.http.get<Prenotazione[]>(this.base_url + "/dateEventi/" + id);
   }
 
 }
